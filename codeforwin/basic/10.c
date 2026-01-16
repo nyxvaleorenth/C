@@ -1,21 +1,22 @@
-/* find power of a number using pow function */
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    float base = 0.0f;
-    float exponent = 0.0f;
-    float result = 0.0f;
+    int days = 0;
+    int weeks = 0;
+    int years = 0;
+    int original_days = 0;
 
-    printf("Enter the base: ");
-    scanf("%f", &base);
+    printf("Enter the days: ");
+    scanf("%d", &days);
+    original_days = days;
 
-    printf("Enter the exponent: ");
-    scanf("%f", &exponent);
+    years = days / 365;
+    days -= years * 365;
 
-    result = pow(base, exponent);
+    weeks = days / 7;
+    days -= weeks * 7;
 
-    printf("%.2f^%.2f = %.2f\n", base, exponent, result);
+    printf("%d days = %d years, %d weeks, %d days\n", original_days, years, weeks, days);
 
     return 0;
 }
