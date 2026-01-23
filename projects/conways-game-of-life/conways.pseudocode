@@ -1,0 +1,107 @@
+input: nothing
+output: conway's game of life
+
+include:
+    stdio: printf, putchar
+    stdlib: rand, srand, system, exit
+    string: memcpy
+    time: time (seeding random)
+    unistd: sleep
+
+define:
+    WIDTH
+    HEIGHT
+    ALIVE
+    DEAD
+
+define:
+    cells, char 2d array        current generation
+    nextCells, char 2d array    next generation
+
+function declaration:
+    initializeGrid
+    printGrid
+    calculateNextGeneration
+    copyGrid
+    clearScreen
+
+=====================================
+                main
+=====================================
+seed random number with current time
+
+initializeGrid()
+
+while True:
+    clearScreen()
+    copyGrid(): copy nextCells to cells of this generation
+    printGrid()
+    calculateNextGeneration()
+    sleep(1)
+
+======================================
+        function definition
+======================================
+
+===================================================
+initializeGrid:  initialzie grid with random cells
+
+for y in height:
+    for x in width:
+        if rand == 0:
+            nextCells[y][x] = ALIVE
+        else:
+            DEAD
+
+==================================================
+printGrid:
+
+for y in height:
+    for x in width:
+        print [y][x]
+    print newline to move to the next row
+
+===================================================
+calculateNextGeneration:
+
+for y in height:
+    for x in width:
+        // get the position of the surounding cells
+        left = (x - 1 + width) % width
+        right = (x + 1) % width
+        above = (y -1 + height) % height
+        below = (y + 1) % height
+
+        numNeighbors = 0
+
+        // count surounding living cells
+        if cells[y][x] is alive: numNeighbors++
+        above, left
+        above, x
+        above, right
+        y, left
+        y, right
+        below, left
+        below, x
+        below, right
+
+        // rule 1: living cell with 2 or 3 neighbosrs survive
+        if cells[y][x] is ALIVE and (numNeighbors == 2 or 3):
+            cell is alive
+        // rule 2: dead cell with exactly 3 neighbours becomes alive
+        else if cell is dead and numNeighbors == 3:
+            cell alive
+        else:
+            cell dead
+
+===================================================
+copy grid:
+
+memcpy nextCells to cells
+memcpy (destination, source, number_of_bytes)
+
+===================================================
+clearScreen:
+
+printf("\033[2J\033[H")
+flush
