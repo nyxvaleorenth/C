@@ -12,10 +12,16 @@ procedure:
 int main() {
     int num1, num2, max;
 
-    printf("Enter num1: ");
-    scanf("%d", &num1);
-    printf("Enter num2: ");
-    scanf("%d", &num2);
+    printf("Enter two numbers (separated by a space): \n");
+    scanf("%d%d", &num1, &num2);
+
+    if (num1 > num2) {
+        max = num1;
+    } else {
+        max = num2;
+    }
+
+    printf("The maximum between %d and %d is %d\n", num1, num2, max);
 
     return 0;
 }
